@@ -1,0 +1,100 @@
+ <style>
+    /* Sidebar base */
+    #sidebar {
+      width: 250px;
+      height: 100vh;
+      background-color: #212529;
+      color: white;
+      position: fixed;
+      top: 56px; /* Altura del navbar */
+      left: -250px;
+      transition: left 0.3s ease;
+      z-index: 1040;
+      padding: 1rem;
+    }
+
+    #sidebar.show {
+      left: 0;
+    }
+
+    #sidebar a {
+      color: white;
+      text-decoration: none;
+    }
+
+    #sidebar a:hover {
+      text-decoration: underline;
+    }
+
+    /* Botón solo visible en <1028px */
+    #toggleSidebar {
+      display: inline-block;
+    }
+
+    @media (min-width: 1028px) {
+      #sidebar {
+        left: 0 !important;
+      }
+
+      #toggleSidebar {
+        display: none !important;
+      }
+
+      body {
+        padding-left: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+    <!-- Botón toggle (visible solo en móvil) -->
+    <button class="btn btn-outline-light me-2" id="toggleSidebar">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <!-- Logo -->
+    <a class="navbar-brand me-auto" href="#">
+      <i class="bi bi-house-door"></i> SIGESA
+    </a>
+
+    <!-- Cerrar sesión -->
+    <button class="btn btn-sm btn-light" id="btnCerrarSesion">
+      <i class="bi bi-box-arrow-right text-primary"></i>
+    </button>
+  </nav>
+
+  <!-- Sidebar -->
+  <aside id="sidebar">
+    <h5 class="text-white mb-3"><i class="bi bi-list me-2"></i> Menú</h5>
+    <ul class="nav flex-column">
+      <li class="nav-item my-1">
+        <a href="radicacion.html" class="nav-link"><i class="bi bi-pencil-square me-2"></i> Radicación</a>
+      </li>
+      <li class="nav-item my-1">
+        <a href="gestion.html" class="nav-link"><i class="bi bi-folder2-open me-2"></i> Gestión</a>
+      </li>
+    </ul>
+  </aside>
+
+
+  <!-- JS para toggle -->
+  <script>
+    const toggleBtn = document.getElementById("toggleSidebar");
+    const sidebar = document.getElementById("sidebar");
+
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("show");
+    });
+
+    // Ocultar sidebar al hacer clic en un enlace (solo en móviles)
+    document.querySelectorAll("#sidebar a").forEach(link => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth < 1028) {
+          sidebar.classList.remove("show");
+        }
+      });
+    });
+  </script>

@@ -1,0 +1,41 @@
+ body, html {
+      height: 100%;
+      margin: 0;
+    }
+
+    .login-container {
+      height: 100vh;
+    }
+    .image-side {
+      background-image: url('/img/login.jpg');
+      width: 600px; 
+      height: 600px; 
+      background-size: cover; /* cubre sin deformar */
+      background-position: center; /* centra la imagen */
+      margin-top:0px; 
+
+    }
+    .form-side {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .title-login{
+      font-family: "Arial", "sans-serif";
+      font-weight: 700;
+      line-height: 1.2;
+      color: #091c35;
+    }
+
+@media (max-width: 1196px) {
+  .image-side {
+    display: none;
+  }
+
+  .form-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+}
